@@ -1,4 +1,5 @@
 javacpp/target/
 project/target/
 target/
-tensorflow/target
+tensorflow/target/
+tensorflow-linux-x86_64/target/
