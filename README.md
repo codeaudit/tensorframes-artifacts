@@ -2,6 +2,16 @@
 Custom jar artifacts compiled for the TensorFrames project. This requirement may go away once
  javacpp-presets version 1.2 is published.
 
+## Install
+
+Simply publish locally the artifacts:
+
+```bash
+build/sbt publishLocal
+```
+
+## Build artifacts yourself
+
 Here is the procedure to recreate the files.
 
 Requirements:
