@@ -20,25 +20,27 @@ Requirements:
 Get the latest docker image for tensorflow:
 
 ```bash
-docker run -it b.gcr.io/tensorflow/tensorflow-full "bash"
+docker run -it --name=tf-build b.gcr.io/tensorflow/tensorflow-full "bash"
 ```
 
 Inside the container, install bazel, maven, javacpp and finally javacpp-presets:
 
 ```bash
 apt-get update
-apt-get -y install maven git
+apt-get -y install git
 
 cd
 wget https://github.com/bazelbuild/bazel/releases/download/0.1.5/bazel-0.1.5-installer-linux-x86_64.sh
 bash bazel-0.1.5-installer-linux-x86_64.sh
 echo "source /usr/local/lib/bazel/bin/bazel-complete.bash" >> ~/.bashrc
+source ~/.bashrc
 
 cd
 rm -f unzip apache-maven-3.*-bin.zip
 wget http://www.trieuvan.com/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.zip
 unzip apache-maven-3.3.9-bin.zip
 echo "export PATH=~/apache-maven-3.3.9/bin:$PATH" >> ~/.bashrc
+source ~/.bashrc
 
 cd
 git clone https://github.com/bytedeco/javacpp.git
@@ -49,12 +51,13 @@ mvn install
 Finally, install a custom version of javacpp-presets:
 ```bash
 cd
-git clone https://github.com/thunterdb/javacpp-presets.git
+git clone https://github.com/bytedeco/javacpp-presets.git
 cd javacpp-presets
 git remote update
 git reset --hard
-git checkout origin/try3
-git pull
 bash cppbuild.sh -platform linux-x86_64 install tensorflow
 mvn package --projects .,tensorflow
 ```
+
+Get the files out and deploy them:
+
