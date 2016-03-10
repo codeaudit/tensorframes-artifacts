@@ -1,5 +1,5 @@
 GROUPID="org.tensorframes"
-VERSION="0.0.1-0.7.1"
+VERSION="0.0.2-0.7.1"
 
 for file in "javacpp" "tensorflow-linux-x86_64" "tensorflow"; do
 	mvn install:install-file \
