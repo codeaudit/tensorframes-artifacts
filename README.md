@@ -55,7 +55,7 @@ git clone https://github.com/bytedeco/javacpp-presets.git
 cd javacpp-presets
 git remote update
 git reset --hard
-bash cppbuild.sh -platform linux-x86_64 install tensorflow
+./cppbuild.sh -platform linux-x86_64 install tensorflow
 mvn package --projects .,tensorflow
 ```
 
